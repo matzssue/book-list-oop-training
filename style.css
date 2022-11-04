@@ -1,0 +1,50 @@
+* {
+  box-sizing: border-box;
+  padding: 0;
+  margin: 0;
+}
+
+body {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+}
+
+.wrapper {
+  background-color: rgb(86, 186, 243);
+  padding: 1em;
+  border-radius: 1em;
+}
+
+#book-form {
+  display: flex;
+  flex-direction: column;
+  min-width: 400px;
+}
+#book-form label {
+  margin-top: 1em;
+}
+.submit-btn {
+  margin-top: 1em;
+  background-color: rgb(27, 124, 180);
+  border: 0;
+  border-radius: 0.2em;
+  height: 30px;
+  color: white;
+  cursor: pointer;
+}
+.list-of-books {
+  padding: 0.2em;
+  margin-top: 2em;
+  background-color: white;
+  border-radius: 0.2em;
+}
+.book {
+  background-color: rgb(80, 157, 230);
+  padding: 0.3em;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-top: 0.5em;
+}
