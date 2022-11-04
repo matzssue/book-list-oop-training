@@ -52,24 +52,45 @@ class Book {
 //     e.target.closest("div").remove();
 //   }
 // });
-
 class App {
   constructor() {
-    listOfBooks.addEventListener("click", this.removeBook);
     submit.addEventListener("click", this.addBook);
+    listOfBooks.addEventListener("click", this.removeBook);
+    this.getLocalStorage();
+  }
+  addBook(e) {
+    e.preventDefault();
+    if (!bookName.value == "") {
+      let book = new Book(bookName.value, bookAuthor.value, bookIsbn.value);
+      books.push(book);
+      return books, book;
+    } else {
+      alert("title and author are required");
+    }
   }
   removeBook(e) {
     if (e.target.className === "remove-btn") {
       e.target.closest("div").remove();
     }
   }
-  addBook(e) {
-    e.preventDefault();
-    let book = new Book(bookName.value, bookAuthor.value, bookIsbn.value);
-    books.push(book.id);
-    console.log(books);
-    return book, books;
+  getLocalStorage() {
+    const data = JSON.parse(localStorage.getItem("books"));
+    books = data;
+    if (!data) return;
+    data.forEach((book) => {
+      let html = `<div class="book" id="${book.id}">
+    <span class="book-name">${book.title}</span>
+    <span class="author-name">${book.author}</span>
+    <span class="ibsn-number">${book.isbn}</span>
+    <span><button class="remove-btn">X</button></span>
+  </div>`;
+      listOfBooks.insertAdjacentHTML("beforeend", html);
+    });
   }
 }
 
 const app = new App();
+
+submit.addEventListener("click", function () {
+  localStorage.setItem("books", JSON.stringify(books));
+});
